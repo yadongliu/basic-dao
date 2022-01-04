@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useWeb3 } from "@3rdweb/hooks";
 import { ThirdwebSDK } from "@3rdweb/sdk";
 import { ethers } from "ethers";
+import { UnsupportedChainIdError } from "@web3-react/core";
 
 const sdk = new ThirdwebSDK("rinkeby");
 const contractAddr = "0x72a8d9178F94dD13eAa73B7fD44334A2a174AdEe";
@@ -189,6 +190,18 @@ const App = () => {
     });
   }
 
+  if (error instanceof UnsupportedChainIdError ) {
+    return (
+      <div className="unsupported-network">
+        <h2>Please connect to Rinkeby</h2>
+        <p>
+          This dapp only works on the Rinkeby network, please switch networks
+          in your connected wallet.
+        </p>
+      </div>
+    );
+  }
+  
   // This is the case where the user hasn't connected their wallet
   // to your web app. Let them call connectWallet.
   if (!address) {
