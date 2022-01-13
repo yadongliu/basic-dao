@@ -5,6 +5,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #7700ee;
+  background-color: #010E2F;
   color: #fff;
   overflow-x: hidden;
 }
@@ -14,7 +15,7 @@ body {
 }
 
 h1 {
-  font-size: 5rem;
+  font-size: 3rem;
 }
 @media screen and (max-width: 768px) {
   h1 {
@@ -114,6 +115,29 @@ h1 {
   box-shadow: 3.1px 6.2px 6.2px hsl(0deg 0% 0% / 0.4);
 }
 
+.voted-text {
+  font-size: 1.0rem;
+  text-align: center;
+}
+
+.proposal-state {
+  color: #fff;
+  padding: 5px;
+  width: fit-content;
+}
+
+.propstate-succeeded {
+  background-color: blue;
+}
+
+.propstate-executed {
+  background-color: #22dce8;
+}
+
+.propstate-other {
+  background-color: #fc5115;
+}
+
 button {
   cursor: pointer;
   background-color: #000;
@@ -121,10 +145,12 @@ button {
   border: none;
   font-weight: bold;
   font-family: inherit;
-  padding: 1.2rem 2rem;
+  padding: 0.7rem 1.2rem;
   text-transform: uppercase;
   border-radius: 3rem;
   font-size: 1.2rem;
+  width: 69%;
+  margin: 0 auto;
 }
 
 button:hover {
