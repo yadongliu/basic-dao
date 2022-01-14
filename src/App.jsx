@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 
 // import thirdweb
 import { useWeb3 } from "@3rdweb/hooks";
-import { ThirdwebSDK } from "@3rdweb/sdk";
+import { ThirdwebSDK, ProposalState } from "@3rdweb/sdk";
 import { ethers } from "ethers";
 import { UnsupportedChainIdError } from "@web3-react/core";
 import ProposalCard from "./components/ProposalCard"
@@ -246,7 +246,12 @@ const App = () => {
           </div>
           <div>
             <h2>Active Proposals</h2>
-              {proposals.reverse().map((proposal, index) => (
+              {proposals.filter(p => p.state === ProposalState.Active).map((proposal, index) => (
+                <ProposalCard proposal={proposal} address={address} voteModule={voteModule} tokenModule={tokenModule}/>
+              ))}
+
+            <h2>Past Proposals</h2>
+              {proposals.filter(p => p.state != ProposalState.Active).map((proposal, index) => (
                 <ProposalCard proposal={proposal} address={address} voteModule={voteModule} tokenModule={tokenModule}/>
               ))}
               <small>
